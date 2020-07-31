@@ -1,0 +1,27 @@
+import styled from "styled-components";
+import styled from "styled-components";
+/* No component ButtonLink não foi usado style-components como aqui, 
+então precisou criar um arquivo .css com a estilizações pra ele. style-components se comporta como css. 
+Precisa instalar a extensão para visualizar melhor.*/
+const Button = styled.button`
+  color: var(--white);
+  border: 1px solid var(--white);
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 16px 24px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  outline: none;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.3s;
+
+  &:hover,/* & referencia o próprio :double-button, etnão não precisa usar .Button:hover */
+  &:focus {
+    opacity: 0.5;
+  }
+`;
+
+export default Button;
