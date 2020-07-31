@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import styled from "styled-components";
+
 /* No component ButtonLink não foi usado style-components como aqui, 
 então precisou criar um arquivo .css com a estilizações pra ele. style-components se comporta como css. 
 Precisa instalar a extensão para visualizar melhor.*/
