@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
-/* No component ButtonLink não foi usado style-components como aqui, 
-então precisou criar um arquivo .css com a estilizações pra ele. style-components se comporta como css. 
-Precisa instalar a extensão para visualizar melhor.*/
-const Button = styled(Link)`
+/* No component ButtonLink não foi usado style-components como aqui,
+então precisou criar um arquivo .css com a estilizações pra ele. style-components se comporta como css.
+Precisa instalar a extensão para visualizar melhor. */
+const Button = styled.button`
   color: var(--white);
   border: 1px solid var(--white);
+  background: var(--background);
   box-sizing: border-box;
   cursor: pointer;
   padding: 16px 24px;

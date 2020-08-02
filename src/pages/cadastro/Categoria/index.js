@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import PageDefault from "../../../components/PageDefault";
-import FormField from "../../../components/FormField";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import PageDefault from '../../../components/PageDefault';
+import FormField from '../../../components/FormField';
+import Button from '../../../components/Button';
 
 function CadastrarCategoria() {
   const valoresIniciais = {
-    nome: "",
-    descricao: "",
-    cor: "",
+    nome: '',
+    descricao: '',
+    cor: '',
   };
   const [categorias, setCategorias] = useState([]);
   const [values, setValues] = useState(valoresIniciais);
@@ -18,7 +19,7 @@ function CadastrarCategoria() {
 
   function handleChange(infosDoEvento) {
     setValue(
-      infosDoEvento.target.getAttribute("name"),
+      infosDoEvento.target.getAttribute('name'),
       infosDoEvento.target.value
     );
   }
@@ -34,34 +35,34 @@ function CadastrarCategoria() {
         }}
       >
         <FormField
-          label="Nome da Categoria: "
-          type="text"
-          name="nome"
+          label='Nome da Categoria'
+          type='text'
+          name='nome'
           value={values.nome}
           onChange={handleChange}
         />
         <FormField
-          label="Descrição: "
-          type="text"
-          name="descricao"
+          label='Descrição'
+          type='textarea'
+          name='descricao'
           value={values.descricao}
           onChange={handleChange}
         />
         <FormField
-          label="Cor: "
-          type="color"
-          name="cor"
+          label='Cor'
+          type='color'
+          name='cor'
           value={values.cor}
           onChange={handleChange}
         />
-        <button>Cadastrar</button>
+        <Button>Cadastrar</Button>
       </form>
       <ul>
-        {categorias.map((categoria, indice) => {
-          return <li key={`${categoria}${indice}`}>{categoria.nome}</li>;
+        {categorias.map((categoria) => {
+          return <li key={`${categoria.nome}`}>{categoria.nome}</li>;
         })}
       </ul>
-      <Link to="/">Ir para Home</Link>
+      <Link to='/'>Ir para Home</Link>
     </PageDefault>
   );
 }
