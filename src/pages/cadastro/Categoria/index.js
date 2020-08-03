@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
@@ -23,6 +23,16 @@ function CadastrarCategoria() {
       infosDoEvento.target.value
     );
   }
+
+  useEffect(() => {
+    const URL = window.location.hostname.includes('localhost') 
+    ? 'http://localhost:3000/categoria' 
+    : 'https://neneflix-react.herokuapp.com/categoria';
+    fetch(URL).then(async (response) => {
+      const resposta = await response.json();
+      setCategorias([...resposta]);
+    });
+  });
 
   return (
     <PageDefault>
@@ -57,6 +67,12 @@ function CadastrarCategoria() {
         />
         <Button>Cadastrar</Button>
       </form>
+      {categorias.length === 0 && (
+        <div>
+          {/*Carregando */}
+          Loading...
+        </div>
+      )}
       <ul>
         {categorias.map((categoria) => {
           return <li key={`${categoria.nome}`}>{categoria.nome}</li>;

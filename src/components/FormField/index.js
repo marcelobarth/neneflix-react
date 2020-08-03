@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 
 const FormFieldWrapper = styled.div`
   position: relative;
   textarea {
     min-height: 150px;
   }
-  input[type="color"] {
+  input[type='color'] {
     padding-left: 56px;
   }
 `;
@@ -54,13 +54,13 @@ const Input = styled.input`
   &:focus {
     border-bottom-color: var(--primary);
   }
-  &:focus:not([type="color"]) + ${Label.Text} {
+  &:focus:not([type='color']) + ${Label.Text} {
     transform: scale(0.6) translateY(-10px);
   }
   ${({ hasValue }) =>
     hasValue &&
     css`
-      &:not([type="color"]) + span {
+      &:not([type='color']) + span {
         transform: scale(0.6) translateY(-10px);
       }
     `}
@@ -68,8 +68,8 @@ const Input = styled.input`
 
 function FormField({ label, type, name, value, onChange }) {
   const fieldId = `id_${name}`;
-  const isTypeTextArea = type === "textarea";
-  const tag = isTypeTextArea ? "textarea" : "input";
+  const isTypeTextArea = type === 'textarea';
+  const tag = isTypeTextArea ? 'textarea' : 'input';
   const hasValue = Boolean(value.length);
 
   return (
@@ -90,8 +90,8 @@ function FormField({ label, type, name, value, onChange }) {
 }
 
 FormField.defaultProps = {
-  type: "text",
-  value: "",
+  type: 'text',
+  value: '',
 };
 
 FormField.propTypes = {
