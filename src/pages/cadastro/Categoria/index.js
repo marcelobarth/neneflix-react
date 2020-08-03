@@ -26,8 +26,8 @@ function CadastrarCategoria() {
 
   useEffect(() => {
     const URL = window.location.hostname.includes('localhost')
-      ? 'http://localhost:3000/categoria'
-      : 'https://neneflix-react.herokuapp.com/categoria';
+      ? 'http://localhost:3000/categorias'
+      : 'https://neneflix-react.herokuapp.com/categorias';
     fetch(URL).then(async (respostaDoServer) => {
       console.log(respostaDoServer);
       if (respostaDoServer.ok) {
