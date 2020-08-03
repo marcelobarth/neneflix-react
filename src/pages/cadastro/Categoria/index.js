@@ -25,14 +25,19 @@ function CadastrarCategoria() {
   }
 
   useEffect(() => {
-    const URL = window.location.hostname.includes('localhost') 
-    ? 'http://localhost:3000/categoria' 
-    : 'https://neneflix-react.herokuapp.com/categoria';
-    fetch(URL).then(async (response) => {
-      const resposta = await response.json();
-      setCategorias([...resposta]);
+    const URL = window.location.hostname.includes('localhost')
+      ? 'http://localhost:3000/categoria'
+      : 'https://neneflix-react.herokuapp.com/categoria';
+    fetch(URL).then(async (respostaDoServer) => {
+      console.log(respostaDoServer);
+      if (respostaDoServer.ok) {
+        const resposta = await respostaDoServer.json();
+        setCategorias(resposta);
+        return;
+      }
+      throw new Error('Não foi possível pegar os dados');
     });
-  });
+  }, []);
 
   return (
     <PageDefault>
