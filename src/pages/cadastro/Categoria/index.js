@@ -3,57 +3,45 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
 
 function CadastrarCategoria() {
   const valoresIniciais = {
-    nome: '',
+    titulo: '',
     descricao: '',
     cor: '',
   };
+
+  const { handleChange, values, clearForm } = useForm(valoresIniciais);
   const [categorias, setCategorias] = useState([]);
-  const [values, setValues] = useState(valoresIniciais);
-
-  function setValue(chave, valor) {
-    setValues({ ...values, [chave]: valor });
-  }
-
-  function handleChange(infosDoEvento) {
-    setValue(
-      infosDoEvento.target.getAttribute('name'),
-      infosDoEvento.target.value
-    );
-  }
 
   useEffect(() => {
     const URL = window.location.hostname.includes('localhost')
       ? 'http://localhost:3000/categorias'
       : 'https://neneflix-react.herokuapp.com/categorias';
     fetch(URL).then(async (respostaDoServer) => {
-      console.log(respostaDoServer);
       if (respostaDoServer.ok) {
         const resposta = await respostaDoServer.json();
-        setCategorias(resposta);
-        return;
+        setCategorias([...resposta]);
       }
-      throw new Error('Não foi possível pegar os dados');
     });
   }, []);
 
   return (
     <PageDefault>
-      <h1>Cadastro Categoria: {values.nome}</h1>
+      <h1>Cadastro Categoria: {values.titulo}</h1>
       <form
         onSubmit={function handleSubmit(infoEvento) {
           infoEvento.preventDefault();
           setCategorias([...categorias, values]);
-          setValues(valoresIniciais);
+          clearForm();
         }}
       >
         <FormField
-          label='Nome da Categoria'
+          label='Titulo da Categoria'
           type='text'
-          name='nome'
-          value={values.nome}
+          name='titulo'
+          value={values.titulo}
           onChange={handleChange}
         />
         <FormField
@@ -80,7 +68,7 @@ function CadastrarCategoria() {
       )}
       <ul>
         {categorias.map((categoria) => {
-          return <li key={`${categoria.nome}`}>{categoria.nome}</li>;
+          return <li key={`${categoria.titulo}`}>{categoria.titulo}</li>;
         })}
       </ul>
       <Link to='/'>Ir para Home</Link>

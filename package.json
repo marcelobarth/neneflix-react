@@ -16,9 +16,9 @@
     "styled-components": "^5.1.1"
   },
   "scripts": {
-    "server": "process.env_development.REACT_APP_SERVER",
-    "start": "process.env_development.REACT_APP_START",
+    "server": "node ./server.js",
     "dev": "concurrently \"react-scripts start\" \"npm run server\"",
+    "start": "npm run server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
